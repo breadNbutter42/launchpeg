@@ -102,9 +102,10 @@ contract FlatLaunchpeg is BaseLaunchpeg, IFlatLaunchpeg, UUPSUpgradeable  {
             _batchRevealSize,
             _revealStartTime,
             _revealInterval,
-            __UUPSUpgradeable_init();
         );
-    }
+    
+        __UUPSUpgradeable_init();
+        }
 
     /// @notice Initialize the two phases of the sale
     /// @dev Can only be called once
