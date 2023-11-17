@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/proxy/utils/UUPSUpgradeable.sol";
 
 import "./interfaces/IFlatLaunchpeg.sol";
 import "./BaseLaunchpeg.sol";
@@ -7,7 +8,19 @@ import "./BaseLaunchpeg.sol";
 /// @title FlatLaunchpeg
 /// @author Trader Joe
 /// @notice Implements a simple minting NFT contract with an allowlist and public sale phase.
-contract FlatLaunchpeg is BaseLaunchpeg, IFlatLaunchpeg {
+contract FlatLaunchpeg is BaseLaunchpeg, IFlatLaunchpeg, UUPSUpgradeable  {
+
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+
+    function _authorizeUpgrade(address newImplementation)
+        internal
+        onlyOwner
+        override
+    {}
+
     /// @notice Price of one NFT for people on the mint list
     /// @dev allowlistPrice is scaled to 1e18
     uint256 public override allowlistPrice;
@@ -88,7 +101,8 @@ contract FlatLaunchpeg is BaseLaunchpeg, IFlatLaunchpeg {
             _amountForAllowlist,
             _batchRevealSize,
             _revealStartTime,
-            _revealInterval
+            _revealInterval,
+            __UUPSUpgradeable_init();
         );
     }
 
