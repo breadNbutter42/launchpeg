@@ -2,8 +2,8 @@
 pragma solidity ^0.8.4;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/proxy/utils/UUPSUpgradeable.sol";
 
-import "./interfaces/IFlatLaunchpeg.sol";
-import "./BaseLaunchpeg.sol";
+import "https://github.com/breadNbutter42/launchpeg/blob/main/contracts/interfaces/IFlatLaunchpeg.sol";
+import "https://github.com/breadNbutter42/launchpeg/blob/main/contracts/BaseLaunchpeg.sol";
 
 /// @title FlatLaunchpeg
 /// @author Trader Joe
